@@ -12,3 +12,9 @@ docker build --tag=rl_zoo3 .
 ```
 ./train_model_env.py -a <agent_name> -e <env_name> -n <n_timesteps>
 ```
+
+# Test model
+
+```
+./test_model_env.py -a <agent_name> -e <env_name> -n <n_timesteps>
+```
