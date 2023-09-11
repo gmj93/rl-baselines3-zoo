@@ -27,12 +27,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Test model for environment')
     parser.add_argument('-n', '--n-timesteps', type=int, default=-1, help='Number of timesteps')
     parser.add_argument('-a', '--agent', type=str, default='a2c', help='Agent type')
-    parser.add_argument('-e', '--environment', default='', help='Specify single environment')
+    parser.add_argument('-e', '--environment', default='CartPole-v1', help='Specify single environment')
     args = vars(parser.parse_args())
 
     defs = Definitions()
 
-    test_cmd = ['docker', 'run', '-it', '--rm', '-e', 'DISPLAY=$DISPLAY',
+    test_cmd = ['docker', 'run', '-it', '--rm', '-e', 'DISPLAY={}'.format(os.environ.get('DISPLAY')),
                 '-v', '/tmp/.X11-unix:/tmp/.X11-unix',
                 '-v', '{}:/app:rw'.format(defs.RLZOO_PATH),
                 defs.DOCKER_IMG, 'python3', '/app/test.py', '-a', args['agent'],
@@ -42,5 +42,7 @@ if __name__ == '__main__':
         test_cmd.append('-n')
         test_cmd.append(str(args['n_timesteps']))
 
+    run_command(test_cmd)
+
     # Printing the command while I don't find a way to run it directly from the script
-    print('\n', ' '.join(test_cmd))
+    # print('\n', ' '.join(test_cmd))
