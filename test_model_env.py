@@ -43,6 +43,3 @@ if __name__ == '__main__':
         test_cmd.append(str(args['n_timesteps']))
 
     run_command(test_cmd)
-
-    # Printing the command while I don't find a way to run it directly from the script
-    # print('\n', ' '.join(test_cmd))
