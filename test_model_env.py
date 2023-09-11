@@ -35,8 +35,8 @@ if __name__ == '__main__':
     test_cmd = ['docker', 'run', '-it', '--rm', '-e', 'DISPLAY=$DISPLAY',
                 '-v', '/tmp/.X11-unix:/tmp/.X11-unix',
                 '-v', '{}:/app:rw'.format(defs.RLZOO_PATH),
-                defs.DOCKER_IMG, 'python3', '/app/enjoy.py', '--algo', args['agent'],
-                '--env', args['environment'], '-f', '/app/rl-trained-agents']
+                defs.DOCKER_IMG, 'python3', '/app/test.py', '-a', args['agent'],
+                '-e', args['environment']]
 
     if args['n_timesteps'] != -1:
         test_cmd.append('-n')

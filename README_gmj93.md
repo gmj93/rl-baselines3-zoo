@@ -1,5 +1,7 @@
 # General info
 
+This is for personal use only and not intended to replace the official resources.
+
 Build non-official container:
 
 ```
